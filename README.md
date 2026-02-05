@@ -77,13 +77,13 @@ Isso elimina `if/else` extensos e facilita a adição de novos meios de pagament
 ---
 ## 🧪 Testes no Postman
 🔧 Variáveis de Ambiente (opcional)
-Crie um Environment no Postman:
+- Crie um Environment no Postman:
 
-baseUrl = http://localhost:8080
+- baseUrl = http://localhost:8080
 ---
 ## 1️⃣ Consultar saldo do correntista
-GET {{baseUrl}}/api/accounts/1
-Resposta:
+- GET {{baseUrl}}/api/accounts/1
+- Resposta:
 {
 "id": 1,
 "cpf": "111.111.111-01",
@@ -92,8 +92,8 @@ Resposta:
 }
 ---
 ## 2️⃣ Pagamento via PIX (com idempotência)
-POST {{baseUrl}}/api/payments
-Body:
+- POST {{baseUrl}}/api/payments
+- Body:
 {
 "type": "PIX",
 "correntistaId": 1,
@@ -108,20 +108,21 @@ Resposta:
 "status": "APPROVED",
 "amount": 50.00,
 "message": "PIX OK: Crédito aplicado para CPF 222.222.222-01"
+
 }
+
 ##📌 Reenviar a mesma requisição com o mesmo idempotencyKey não gera novo débito.
 ---
 ## 3️⃣ Pagamento com Cartão de Crédito
-POST {{baseUrl}}/api/payments
-Body:
+- POST {{baseUrl}}/api/payments
+- Body:
 {
 "type": "CREDIT_CARD",
 "correntistaId": 1,
 "amount": 50.00
 }
 
----
-Resposta:
+- Resposta:
 {
 "id": "013b9988-63fa-44db-9bd0-b2ca0e7aa008",
 "type": "CREDIT_CARD",
@@ -131,14 +132,16 @@ Resposta:
 }
 ---
 ## 4️⃣ Pagamento via Boleto
-POST {{baseUrl}}/api/payments
-Body:
+
+- POST {{baseUrl}}/api/payments
+- Body:
 {
 "type": "BOLETO",
 "correntistaId": 1,
 "amount": 50.00
-}
-Resposta:
+} 
+
+- Resposta:
 {
 "id": "f4386785-cd7f-40e6-955a-2b0450367ec3",
 "type": "BOLETO",
@@ -148,11 +151,11 @@ Resposta:
 }
 ---
 ## ✅ Validação pós-pagamento
-Consulte novamente o saldo:
+- Consulte novamente o saldo:
 
-GET {{baseUrl}}/api/accounts/1
+- GET {{baseUrl}}/api/accounts/1
 
-E valide a atualização conforme as regras de débito de cada estratégia.
+- E valida a atualização conforme as regras de débito de cada estratégia.
 ---
 ## 📦 Estrutura do Projeto
 
