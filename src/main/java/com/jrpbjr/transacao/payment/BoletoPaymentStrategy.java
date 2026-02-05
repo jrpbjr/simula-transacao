@@ -3,7 +3,7 @@ package com.jrpbjr.transacao.payment;
 import com.jrpbjr.transacao.domain.Pagamento;
 import com.jrpbjr.transacao.domain.PaymentType;
 import com.jrpbjr.transacao.repository.CorrentistaRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Component;
 
 @Component
