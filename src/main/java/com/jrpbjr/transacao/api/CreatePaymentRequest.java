@@ -11,5 +11,7 @@ public record CreatePaymentRequest(
         @NotNull Long correntistaId,
         @NotNull @DecimalMin(value = "0.01") BigDecimal amount,
         // usado para PIX (cpf/chave do destinatário); pode ser null em boleto/cartão
-        String pixReceiverKey
+        String pixReceiverKey,
+        @jakarta.validation.constraints.Size(min = 8, max = 100)
+                String idempotencyKey
 ) {}
